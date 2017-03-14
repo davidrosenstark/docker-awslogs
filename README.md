@@ -38,7 +38,7 @@ the AWS keys
 docker run -d --name nginx -v /mnt/logs:/var/log/nginx -p 80:80 sergeyzh/centos6-nginx
 
 # Run container with AWS CloudWatch logs uploader
-docker run -d --name awslogs -e AWS_LOGFILE=/mnt/logs/access.log -e AWS_DURATION=10000 -v /mnt/logs:/mnt/logs sergeyzh/awslogs
+docker run -d --name awslogs -e AWS_LOGFILE=/mnt/logs/access.log -e AWS_DURATION=10000 -v /mnt/logs:/mnt/logs drosenstark/awslogs
 ```
 
 Now you can see access logs of your Nginx at [AWS Console](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:).
