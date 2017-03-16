@@ -47,7 +47,12 @@ NOTE: Of course you should run it on the Amazon EC2 and you should set IAM role 
 
 If you do  not then run as follows
 
-docker run -d --name awslogs -e AWS_LOGFILE=/var/log/applogs.log -e AWS_DURATION=5000 -e AWS_GROUPNAME=/ci/messaging -e AWS_LOGFORMAT="%Y-%m-%d %H:%M:%S" -v /var/lib/docker/log/myapp/:/var/log awslogs
+docker run -d --name awslogs -e AWS_LOGFILE=/var/log/applogs.log \
+-e AWS_STREAM_NAME="web-2" -e AWS_DURATION=5000 -e AWS_GROUPNAME=/dev/web \
+-e AWS_REGION=us-west-2 -e AWS_INITIAL_POSITION="end-of-file" \
+-e AWS_ACCESS_KEY_ID=<access key> -e AWS_SECRET_ACCESS_KEY=<secret key> \
+-e AWS_LOGFORMAT="%Y-%m-%d %H:%M:%S" -v /var/lib/docker/log/myapp/:/var/log \
+drosenstark/awslogs:latest
 
 ### MAINTAINERS
 
