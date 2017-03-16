@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Ryuta Otaki <otaki.ryuta@classmethod.jp>, Sergey Zhukov <sergey@jetbrains.com>
+MAINTAINER Ryuta Otaki <otaki.ryuta@classmethod.jp>, Sergey Zhukov <sergey@jetbrains.com>, David Rosenstark <drosenstark@gmail.com>
 
 RUN apt-get update
 RUN apt-get install -q -y python python-pip wget

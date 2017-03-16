@@ -29,12 +29,15 @@ REGION=${AWS_REGION:-"us-east-1"}
 cp -f /awslogs.conf.dummy /var/awslogs/etc/awslogs.conf
 
 cat >> /var/awslogs/etc/awslogs.conf <<EOF
+[general]
+logging_config_file=/var/awslogs/etc/logger.conf
+
 [${LOGFILE}]
 datetime_format = ${LOGFORMAT}
 file = ${LOGFILE}
 buffer_duration = ${DURATION}
-log_stream_name = ${STREAM_NAME} 
-initial_position = ${INITIAL_POSITION} 
+log_stream_name = ${STREAM_NAME}
+initial_position = ${INITIAL_POSITION}
 log_group_name = ${GROUPNAME}
 
 EOF
@@ -52,7 +55,7 @@ if [ ! -z  ${AWS_ACCESS_KEY_ID} ]; then
 mkdir /root/.aws
 cat > /root/.aws/credentials <<EOF
 [default]
-aws_access_key_id = ${AWS_ACCESS_KEY_ID} 
+aws_access_key_id = ${AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
 EOF
 
